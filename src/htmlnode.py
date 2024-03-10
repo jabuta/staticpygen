@@ -8,7 +8,7 @@ class HTMLNode:
     def to_html(self):
         raise NotImplementedError("to_html method not implemented")
 
-    def props_to_html(self):
+    def props_to_html(self) -> str:
         if self.props is None:
             return ""
         props_html = ""
@@ -20,10 +20,10 @@ class HTMLNode:
         return f"HTMLNode({self.tag}, {self.value}, children: {self.children}, {self.props})"
     
 class LeafNode(HTMLNode):
-    def __init__(self, tag=None, value=None, props=None):
-        super().__init__(tag, value, None, props)
+    def __init__(self, tag: str =None, value: str =None, props: dict =None):
+        super().__init__(tag, value.replace("\n","<br>"), None, props)
 
-    def to_html(self):
+    def to_html(self) -> str:
         if self.value is None:
             raise ValueError("value cannot be None")        
         if self.tag is None:
@@ -31,11 +31,10 @@ class LeafNode(HTMLNode):
         return f"<{self.tag}{super().props_to_html()}>{self.value}</{self.tag}>"
     
 class ParentNode(HTMLNode):
-    def __init__(self,tag=None, children=None, props=None):
-
+    def __init__(self,tag: str =None, children: list[HTMLNode] =None, props: dict =None):
         super().__init__(tag, None, children, props)
 
-    def to_html(self):
+    def to_html(self) -> str:
         if self.tag is None:
             raise ValueError("tag cannot be None")
         if self.children is None:
