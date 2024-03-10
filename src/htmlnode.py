@@ -21,7 +21,7 @@ class HTMLNode:
     
 class LeafNode(HTMLNode):
     def __init__(self, tag: str =None, value: str =None, props: dict =None):
-        super().__init__(tag, value.replace("\n","<br>"), None, props)
+        super().__init__(tag, value, None, props)
 
     def to_html(self) -> str:
         if self.value is None:
