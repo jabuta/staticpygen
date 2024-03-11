@@ -1,7 +1,8 @@
-from textnode import TextNode
+
+
+from cp_staic_public import init_public
+
 
 def main():
-    textnodenew = TextNode("This is a text node", "bold", "https://www.boot.dev")
-    print(textnodenew)
-
+    init_public()
 main()
