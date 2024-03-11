@@ -1,5 +1,6 @@
 #static site
 public/
+public
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
