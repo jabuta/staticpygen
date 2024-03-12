@@ -14,11 +14,11 @@ def text_to_textnodes(text: str) -> list[TextNode]:
     # **split bold
     node_list = split_nodes_delimiter(node_list,"**",text_type_bold)
     # __split bold
-    node_list = split_nodes_delimiter(node_list,"__",text_type_bold)
+    #node_list = split_nodes_delimiter(node_list,"__",text_type_bold)
     # *split italic*
     node_list = split_nodes_delimiter(node_list,"*",text_type_italic)
     # _split italic_
-    node_list = split_nodes_delimiter(node_list,"_",text_type_italic)
+    #node_list = split_nodes_delimiter(node_list,"_",text_type_italic)
     # `split code
     node_list = split_nodes_delimiter(node_list,"`",text_type_code)
     node_list = split_nodes_image(node_list)
@@ -36,6 +36,7 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
             new_nodes.append(old_node)
             continue
         if len(split_strings) % 2 == 0:
+            print(delimiter)
             raise ValueError("Invalid Markdown syntax: unclosed delimiter")
         for i in range(0,len(split_strings)):
             if split_strings[i] == "":
